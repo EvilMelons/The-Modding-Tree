@@ -29,7 +29,7 @@ addLayer("Skills", {
         11: {
         title: "Harvest",
         description: "Begin the hunt.",
-        cost: new Decimal(1)
+        cost: new Decimal(0)
         },
         12: {
             title: "Speed",
