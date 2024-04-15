@@ -47,7 +47,8 @@ addLayer("Skills", {
             cost: new Decimal(5)
         }
     }
-})
+}),
+
 addLayer("void", {
     name: "void",
     symbol: "V",
