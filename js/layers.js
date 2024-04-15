@@ -22,17 +22,19 @@ addLayer("Skills", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "S", description: "S: Reset for Skill Points.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
     upgrades: {
         11: {
-        title: "Speed.",
-        description: "Move faster, so that you can kill faster.",
+        title: "Harvest",
+        description: "Begin the hunt.",
         cost: new Decimal(1)
         },
         12: {
-
+            title: "Speed",
+            description: "Kill twice as fast.",
+            cost: new Decimal(3)
         }
     }
 })
