@@ -49,6 +49,9 @@ addLayer("Skills", {
     }
 })
 addLayer("void", {
+    name: "void",
+    symbol: "V",
+    position: 0,
     startData() { return {                  // startData is a function that returns default data for a layer. 
         unlocked: false,                     // You can add more variables here to add them to your layer.
         points: new Decimal(0),             // "points" is the internal name for the main resource of the layer.
@@ -56,7 +59,7 @@ addLayer("void", {
 
     color: "273030",                       // The color for this layer, which affects many elements.
     resource: "void",            // The name of this layer's main prestige resource.
-    row: 0,                                 // The row this layer is on (0 is the first row).
+    row: 1,                                 // The row this layer is on (0 is the first row).
 
     baseResource: "Skill Points",                 // The name of the resource your prestige gain is based on.
     baseAmount() { return player.points },  // A function to return the current amount of baseResource.
