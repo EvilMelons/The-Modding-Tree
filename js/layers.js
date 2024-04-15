@@ -26,8 +26,12 @@ addLayer("Skills", {
     ],
     layerShown(){return true},
     upgrades: {
-        title: "A scythe to take souls.",
-        description: "Take one soul per second.",
-        cost: new Decimal(1)
+        11: {title: "Speed.",
+        description: "Move faster, so that you can kill faster.",
+        cost: new Decimal(10)
+        },
+        12: {
+
+        }
     }
 })
