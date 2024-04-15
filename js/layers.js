@@ -34,7 +34,12 @@ addLayer("Skills", {
         12: {
             title: "Speed",
             description: "Kill twice as fast.",
-            cost: new Decimal(3)
+            cost: new Decimal(2)
+        },
+        13: {
+            title: "Intelligence",
+            description: "Learn a trick to triple the souls you get per kill.",
+            cost: new Decimal(4)
         }
     }
 })
