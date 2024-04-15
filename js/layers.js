@@ -26,7 +26,8 @@ addLayer("Skills", {
     ],
     layerShown(){return true},
     upgrades: {
-        11: {title: "Speed.",
+        11: {
+        title: "Speed.",
         description: "Move faster, so that you can kill faster.",
         cost: new Decimal(10)
         },
