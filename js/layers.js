@@ -42,33 +42,33 @@ addLayer("Skills", {
             cost: new Decimal(4)
         },
         14: {
-            title: "Gaze into the Void",
-            description: "Gaze long enough into the void, that it stares back.",
+            title: "Flight",
+            description: "Learn to fly.  Unlocks the next major layer.",
             cost: new Decimal(5)
         }
     }
 }),
-addLayer("void", {
-    name: "void",
-    symbol: "V",
+addLayer("wings", {
+    name: "wings",
+    symbol: "W",
     position: 0,
     startData() { return {                  // startData is a function that returns default data for a layer. 
-        unlocked: false,                     // You can add more variables here to add them to your layer.
+        unlocked: true,                     // You can add more variables here to add them to your layer.
         points: new Decimal(0),             // "points" is the internal name for the main resource of the layer.
     }},
 
-    color: "273030",               // The color for this layer, which affects many elements.
-    resource: "void",            // The name of this layer's main prestige resource.
+    color: "#A0d0e1",                       // The color for this layer, which affects many elements.
+    resource: "wings",            // The name of this layer's main prestige resource.
     row: 1,                                 // The row this layer is on (0 is the first row).
 
-    baseResource: "Skills",                 // The name of the resource your prestige gain is based on.
-    baseAmount() {return player.Skills.points},  // A function to return the current amount of baseResource.
+    baseResource: "Skill points",                 // The name of the resource your prestige gain is based on.
+    baseAmount() { return player.s.points },  // A function to return the current amount of baseResource.
 
-    requires: new Decimal(6),              // The amount of the base needed to  gain 1 of the prestige currency.
+    requires: new Decimal(10),              // The amount of the base needed to  gain 1 of the prestige currency.
                                             // Also the amount required to unlock the layer.
 
-    type: "normal",                         // Determines the formula used for calculating prestige currency.
-    exponent: 0.5,                          // "normal" prestige gain is (currency^exponent).
+    type: "static",                         // Determines the formula used for calculating prestige currency.
+    exponent: 0.3,                          // "normal" prestige gain is (currency^exponent).
 
     gainMult() {                            // Returns your multiplier to your gain of the prestige resource.
         return new Decimal(1)               // Factor in any bonuses multiplying gain here.
@@ -77,18 +77,15 @@ addLayer("void", {
         return new Decimal(1)
     },
 
-    layerShown() { return true },          // Returns a bool for if this layer's node should be visible in the tree.
+    layerShown() {
+        let shown = hasUpgrade('Skills', 14)
+     },          // Returns a bool for if this layer's node should be visible in the tree.
 
-    upgrades: {
-        11: {
-            title: "Shadow Step",
-            description: "Learn to move through the shadows, in order to quintuple your speed.",
-            cost: new Decimal(1)
-        },
-        12: {
-            title: "Tome",
-            description: "Purchase a tome from the void to learn how to double your skill point gain.",
-            cost: new Decimal(3)
+    milestones: {
+        0: {
+            requirementDescription: "1 wing",
+            effectDescription: "Double skill point gain, and soul gain",
+            done() { return player[this.layer].points.gte(1)}
         }
     },
 })
