@@ -48,22 +48,21 @@ addLayer("Skills", {
         }
     }
 }),
-
 addLayer("void", {
     name: "void",
-    symbol: "Vt",
+    symbol: "V",
     position: 0,
     startData() { return {                  // startData is a function that returns default data for a layer. 
         unlocked: false,                     // You can add more variables here to add them to your layer.
         points: new Decimal(0),             // "points" is the internal name for the main resource of the layer.
     }},
 
-    color: "273030",                       // The color for this layer, which affects many elements.
+    color: "273030",               // The color for this layer, which affects many elements.
     resource: "void",            // The name of this layer's main prestige resource.
     row: 1,                                 // The row this layer is on (0 is the first row).
 
     baseResource: "Skills",                 // The name of the resource your prestige gain is based on.
-    baseAmount() {return player.Skills},  // A function to return the current amount of baseResource.
+    baseAmount() {return player.Skills.points},  // A function to return the current amount of baseResource.
 
     requires: new Decimal(6),              // The amount of the base needed to  gain 1 of the prestige currency.
                                             // Also the amount required to unlock the layer.
@@ -81,6 +80,15 @@ addLayer("void", {
     layerShown() { return true },          // Returns a bool for if this layer's node should be visible in the tree.
 
     upgrades: {
-        // Look in the upgrades docs to see what goes here!
+        11: {
+            title: "Shadow Step",
+            description: "Learn to move through the shadows, in order to quintuple your speed.",
+            cost: new Decimal(1)
+        },
+        12: {
+            title: "Tome",
+            description: "Purchase a tome from the void to learn how to double your skill point gain.",
+            cost: new Decimal(3)
+        }
     },
 })
